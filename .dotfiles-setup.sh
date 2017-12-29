@@ -29,6 +29,3 @@ dotfiles config push.default simple
 dotfiles config user.name "$GIT_USER_NAME"
 dotfiles config user.email "$GIT_USER_EMAIL"
 
-# Delete this one-time script
-rm -- "$0"
-
