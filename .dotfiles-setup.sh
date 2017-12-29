@@ -4,6 +4,9 @@ GITHUB_USERNAME=ericslandry
 GITHUB_REPONAME=dotfiles
 GIT_USER_NAME="Eric Landry"
 GIT_USER_EMAIL="eric.s.landry@gmail.com"
+
+# TODO: Prompt user to confirm destination
+
 git clone --bare https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME.git $HOME/.dotfiles
 function dotfiles {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
@@ -16,6 +19,7 @@ if [ $? = 0 ]; then
   echo "Checked out dotfiles.";
 else
   echo "Backing up pre-existing dot files.";
+  # TODO: Improve merging of pre-existing files
   dotfiles checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $HOME/.dotfiles/backup/{}
 fi;
 echo "Try check out again"
