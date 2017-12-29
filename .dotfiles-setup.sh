@@ -9,7 +9,7 @@ git clone --bare https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME.git $HOME/
 mkdir -p $HOME/.dotfiles-tmp
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/.dotfiles-tmp checkout
 rsync --recursive --verbose --exclude '.git' $HOME/.dotfiles-tmp/ $HOME/
-rm -rf $HOME/dotfiles-tmp
+rm -rf $HOME/.dotfiles-tmp
 function dotfiles {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
