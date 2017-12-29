@@ -1,10 +1,9 @@
 #!/bin/bash
-
+# One-time setup script based on https://bitbucket.org/durdn/cfg/raw/master/.bin/install.sh
 GITHUB_USERNAME=ericslandry
 GITHUB_REPONAME=dotfiles
 GIT_USER_NAME="Eric Landry"
 GIT_USER_EMAIL="eric.s.landry@gmail.com"
-
 git clone --bare https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME.git $HOME/.dotfiles
 function dotfiles {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
@@ -30,4 +29,6 @@ dotfiles config push.default simple
 dotfiles config user.name "$GIT_USER_NAME"
 dotfiles config user.email "$GIT_USER_EMAIL"
 
+# Delete this one-time script
+rm -- "$0"
 
