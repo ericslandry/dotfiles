@@ -5,9 +5,11 @@ GITHUB_REPONAME=dotfiles
 GIT_USER_NAME="Eric Landry"
 GIT_USER_EMAIL="eric.s.landry@gmail.com"
 
-git clone --bare https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME.git $HOME/.dotfiles-tmp
+git clone --bare https://github.com/$GITHUB_USERNAME/$GITHUB_REPONAME.git $HOME/.dotfiles
+mkdir -p $HOME/.dotfiles-tmp
+/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME/.dotfiles-tmp checkout
 rsync --recursive --verbose --exclude '.git' $HOME/.dotfiles-tmp/ $HOME/
-rm --recursive $HOME/dotfiles-tmp
+rm -rf $HOME/dotfiles-tmp
 function dotfiles {
    /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
 }
